@@ -13,13 +13,13 @@ read target
 
 cmd="bettercap -iface $int"
 
-cmd+=" net.probe on; net.recon on; net.sniff on; net.show on"
+cmd+=" net.probe on; net.recon on; net.show on"
 cmd+="; set arp.spoof.fullduplex true"
 
 if [ ! -z "$target" ]; then
   cmd+="; set arp.spoof.targets $target"
 fi
-
+cmd+="; arp.spoof on; net.sniff on"
 echo "Starting Bettercap:"
 echo "$cmd"
 eval "$cmd"
