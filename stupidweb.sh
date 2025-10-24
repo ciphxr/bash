@@ -1,6 +1,6 @@
 #!/bin/bash
 
-HARDCODED_WORDLIST="/path/to/hardcoded/wordlist.txt"
+HARDCODED_WORDLIST="/usr/share/wordlists/dirb/common.txt"
 
 read -p "Enter wordlist directory (press enter to use default): " wordlistdir
 if [ -z "$wordlistdir" ]; then
@@ -18,7 +18,7 @@ root_domain=$(echo "$website" | sed -e 's~http[s]*://~~g' -e 's~/.*~~g')
 read -p "Choose nmap option (1-5): " nmap_option
 
 case $nmap_option in
-  1) nmap_args="-sS" ;;
+  1) nmap_args="-sS -f -D RND:10 -sS --data-length 25 --mtu 24" ;;
   2) nmap_args="-sS -T3" ;;
   3) nmap_args="-sS -T4" ;;
   4) nmap_args="-sS -T5" ;;
