@@ -1,5 +1,0 @@
-net.probe on
-net.recon on
-set arp.spoof.fullduplex true
-arp.spoof on
-net.sniff on
